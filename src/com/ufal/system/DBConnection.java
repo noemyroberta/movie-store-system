@@ -1,6 +1,9 @@
 package src.com.ufal.system;
 
+import src.com.ufal.system.beans.Client;
+
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DBConnection {
 
@@ -17,6 +20,10 @@ public class DBConnection {
         Class.forName(DRIVER);
         connection = (Connection) DriverManager.getConnection(URL, USER, PASSWORD);
         connection.close();
+    }
+
+    static ArrayList<Client> getClients() {
+        return new ArrayList<Client>();
     }
 
 }
