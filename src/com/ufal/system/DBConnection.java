@@ -19,8 +19,21 @@ public class DBConnection {
         connection = (Connection) DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
-    static ArrayList<Client> getClients() {
-        return new ArrayList<Client>();
+    static ArrayList<Client> getClients() throws SQLException {
+        ArrayList<Client> clients = new ArrayList<Client>();
+
+        Statement statement = connection.createStatement();
+        ResultSet result = statement.executeQuery("SELECT * FROM tb_clients");
+
+        while (result.next()) {
+            String clientName = result.getString("cli_name");
+            String clientLogin = result.getString("cli_login");
+
+            clients.add(new Client(clientName, clientLogin));
+        }
+
+        statement.close();
+        return clients;
     }
 
     static void close() throws SQLException {
