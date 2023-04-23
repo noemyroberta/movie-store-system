@@ -16,6 +16,7 @@ public class DBConnection {
 
     static void start() throws ClassNotFoundException, SQLException {
         Class.forName(DRIVER);
+        System.out.println("Starting connection with "+DATABASE+"...");
         connection = (Connection) DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
@@ -25,6 +26,7 @@ public class DBConnection {
         Statement statement = connection.createStatement();
         ResultSet result = statement.executeQuery("SELECT * FROM tb_clients");
 
+        System.out.println("Getting clients from database...");
         while (result.next()) {
             String clientName = result.getString("cli_name");
             String clientLogin = result.getString("cli_login");
@@ -37,6 +39,7 @@ public class DBConnection {
     }
 
     static void close() throws SQLException {
+        System.out.println("Closing connection with "+DATABASE+"...");
         connection.close();
     }
 
