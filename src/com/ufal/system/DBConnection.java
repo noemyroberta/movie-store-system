@@ -17,11 +17,14 @@ public class DBConnection {
     static void start() throws ClassNotFoundException, SQLException {
         Class.forName(DRIVER);
         connection = (Connection) DriverManager.getConnection(URL, USER, PASSWORD);
-        connection.close();
     }
 
     static ArrayList<Client> getClients() {
         return new ArrayList<Client>();
+    }
+
+    static void close() throws SQLException {
+        connection.close();
     }
 
 }
