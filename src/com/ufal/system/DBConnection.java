@@ -6,13 +6,13 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class DBConnection {
-    static final String USER = "localhost";
-    static final String PASSWORD = "";
-    static final String PORT = "3306";
-    static final String DATABASE = "db_movie_store";
-    static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    static final String URL = "jdbc:mysql://" + USER + ":" + PORT + "/" + DATABASE;
-    static Connection connection;
+    static private final String USER = "localhost";
+    static private final String PASSWORD = "";
+    static private final String PORT = "3306";
+    static private final String DATABASE = "db_movie_store";
+    static private final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    static private final String URL = "jdbc:mysql://" + USER + ":" + PORT + "/" + DATABASE;
+    static private Connection connection;
 
     static void start() throws ClassNotFoundException, SQLException {
         Class.forName(DRIVER);
